@@ -64,7 +64,7 @@ int main()
     cudaMemcpy(d_out,   out,   pixel * sizeof(unsigned char), cudaMemcpyHostToDevice);
 
     /* Main function */
-    convertToGray<<< 1024,1024>>>(pixel, cycle, d_red, d_green, d_blue, d_out);
+    convertToGray<<< 512,1024>>>(pixel, cycle, d_red, d_green, d_blue, d_out);
 
     /* Transfer data from device to host memory */
     cudaMemcpy(out, d_out, pixel * sizeof(unsigned char), cudaMemcpyDeviceToHost);
